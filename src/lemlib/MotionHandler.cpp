@@ -27,4 +27,22 @@ void cancel() {
     // if the task is currently running, notify the task
     if (isMoving()) motionTask->notify();
 }
+
+void waitUntilRadius(Length x, Length y, Length radius, std::function<units::Pose()> poseGetter) {
+    do {
+        const units::Pose pose = poseGetter();
+        if (pose.distanceTo(units::V2Position(x, y)) <= radius) return;
+        pros::delay(5);
+    } while (isMoving());
+}
+
+void waitUntilProgress(Length dist, std::function<units::Pose()> poseGetter) {
+    const units::V2Position start = poseGetter(); // snapshot position at call time
+    do {
+        const units::Pose pose = poseGetter();
+        if (pose.distanceTo(start) >= dist) return;
+        pros::delay(5);
+    } while (isMoving());
+}
+
 } // namespace lemlib::motion_handler
