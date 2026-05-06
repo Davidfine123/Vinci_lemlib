@@ -1,6 +1,8 @@
 #pragma once
 
 #include <functional>
+#include "units/units.hpp"
+#include "units/Pose.hpp"
 
 namespace lemlib::motion_handler {
 /**
