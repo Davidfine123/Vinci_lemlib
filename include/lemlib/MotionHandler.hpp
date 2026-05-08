@@ -3,6 +3,8 @@
 #include <functional>
 #include "units/units.hpp"
 #include "units/Pose.hpp"
+#include "units/units.hpp"
+#include "units/Pose.hpp"
 
 namespace lemlib::motion_handler {
 /**
